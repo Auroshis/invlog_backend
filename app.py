@@ -1,12 +1,9 @@
 from fastapi import FastAPI
 from fastapi import Request, Response, HTTPException, status
-from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, Field
 from pymongo import MongoClient
 from bson import ObjectId
-import uuid
-import json
-from typing import List
+from typing import Optional
 from dotenv import dotenv_values
 
 app = FastAPI()
@@ -29,9 +26,9 @@ class Item(BaseModel):
     item_name: str = Field(...)
     placed_at: str = Field(...)
     use_by: str = Field(...)
-    price: float | None = None
-    quantity: float | None = None
-    bought_on: str | None = None
+    price: Optional[float] = None
+    quantity: Optional[float] = None
+    bought_on:  Optional[str] = None
     category: str = Field(...)
     status: str = Field(...)
 
