@@ -12,8 +12,8 @@ config = dotenv_values(".env")
 
 @app.on_event("startup")
 def startup_db_client():
-    app.mongodb_client = MongoClient(config["ATLAS_URI"])
-    app.database = app.mongodb_client[config["DB_NAME"]]
+    app.mongodb_client = MongoClient(config["MONGODB_URL"])
+    app.database = app.mongodb_client[config["MONGODB_DB"]]
 
 
 @app.on_event("shutdown")
