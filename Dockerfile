@@ -7,8 +7,8 @@ WORKDIR /app
 
 RUN pip install pymongo
 
-ENV MONGODB_URL=mongodb+srv://mongoinvlog:LVyIX2yP1wXF60LT@invlogcluster0.5fksgid.mongodb.net/?retryWrites=true&w=majority
-ENV MONGODB_DB=InvlogDB
+ENV MONGODB_URL=$MONGODB_URL
+ENV MONGODB_DB=$MONGODB_DB
 
 EXPOSE 8000
 
