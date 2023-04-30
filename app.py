@@ -4,16 +4,17 @@ from pydantic import BaseModel, Field
 from pymongo import MongoClient
 from bson import ObjectId
 from typing import Optional
-from dotenv import dotenv_values
+import os
+# from dotenv import dotenv_values
 
 app = FastAPI()
-config = dotenv_values(".env")
+# config = dotenv_values(".env")
 
 
 @app.on_event("startup")
 def startup_db_client():
-    app.mongodb_client = MongoClient(config["MONGODB_URL"])
-    app.database = app.mongodb_client[config["MONGODB_DB"]]
+    app.mongodb_client = MongoClient(os.environ.get("MONGODB_URL"))
+    app.database = app.mongodb_client[os.environ.get("MONGODB_DB")]
 
 
 @app.on_event("shutdown")
