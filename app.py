@@ -4,12 +4,24 @@ from pydantic import BaseModel, Field
 from pymongo import MongoClient
 from bson import ObjectId
 from typing import Optional
+from fastapi.middleware.cors import CORSMiddleware
 import os
 # from dotenv import dotenv_values
+
+# Origins that are allowed to access the API (replace with your frontend URL)
+origins = ["http://localhost", "https://grihalaya-5aa62.web.app/"]
 
 app = FastAPI()
 # config = dotenv_values(".env")
 
+# Add CORS middleware to your app
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # You can specify HTTP methods
+    allow_headers=["*"],  # You can specify custom headers
+)
 
 @app.on_event("startup")
 def startup_db_client():
