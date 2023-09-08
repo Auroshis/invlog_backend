@@ -9,7 +9,7 @@ import os
 # from dotenv import dotenv_values
 
 # Origins that are allowed to access the API (replace with your frontend URL)
-origins = ["http://localhost", "https://grihalaya-5aa62.web.app/"]
+origins = ["*"]
 
 app = FastAPI()
 # config = dotenv_values(".env")
